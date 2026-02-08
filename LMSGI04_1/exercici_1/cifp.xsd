@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-
+  
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="https://paucasesnovescifp.cat"
+  xmlns="https://paucasesnovescifp.cat"
+  elementFormDefault="qualified">
+  
   <!-- Lo defino cmo enumeración -->
   <xs:simpleType name="CicleType">
     <xs:restriction base="xs:string">
@@ -51,6 +55,9 @@
   <xs:complexType name="AssignaturaType">
     <xs:sequence>
       <xs:element name="nom_assignatura" type="xs:string"/>
+     
+      <!-- defino las fechas como string según el enunciado, aunque podrían definirse como date, es más restrictivo. He probado la validación con ambos tipos -->
+
       <xs:element name="data_inici" type="xs:string" minOccurs="0"/>
       <xs:element name="data_final" type="xs:string" minOccurs="0"/>
     </xs:sequence>
@@ -75,6 +82,7 @@
   <xs:element name="cifp">
     <xs:complexType>
       <xs:sequence>
+        <!-- puede haber alumnos y/o profesores -->
         <xs:element name="alumne" type="AlumneType" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element name="professor" type="ProfessorType" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
