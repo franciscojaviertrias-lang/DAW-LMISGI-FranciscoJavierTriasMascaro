@@ -1,2 +1,44 @@
-<cifp>
-</cifp>
+<!-- elemento raíz puede contener alumnos y/o profesores -->
+<!ELEMENT cifp (alumne*, professor*)>
+
+<!ELEMENT alumne (nom, llinatges, data_naixement?, correu?, telefon?, adreca?, data_matricula, curs)>
+<!ATTLIST alumne id CDATA #REQUIRED>
+
+<!ELEMENT professor (nom, llinatges, data_naixement?, correu?, telefon?, adreca?, data_incorporacio, departament, assignatura*)>
+<!ATTLIST professor id CDATA #REQUIRED>
+
+<!-- Defino cada elemento de los comunes -->
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT llinatges (#PCDATA)>
+<!ELEMENT data_naixement (#PCDATA)>
+<!ELEMENT correu (#PCDATA)>
+<!ELEMENT telefon (#PCDATA)>
+<!ELEMENT adreca (#PCDATA)>
+<!ELEMENT data_matricula (#PCDATA)>
+
+<!-- Restricción DTD: como elemento contenedor -->
+<!ELEMENT curs (DAM | DAW | ASIX | SMX | SEIA | ER | AUT)>
+<!ELEMENT DAM EMPTY>
+<!ELEMENT DAW EMPTY>
+<!ELEMENT ASIX EMPTY>
+<!ELEMENT SMX EMPTY>
+<!ELEMENT SEIA EMPTY>
+<!ELEMENT ER EMPTY>
+<!ELEMENT AUT EMPTY>
+
+<!ELEMENT data_incorporacio (#PCDATA)>
+
+<!-- Restricción DTD: como elemento contenedor -->
+<!ELEMENT departament (Informatica | Electricitat | Automocio)>
+<!ELEMENT Informatica EMPTY>
+<!ELEMENT Electricitat EMPTY>
+<!ELEMENT Automocio EMPTY>
+
+<!ELEMENT assignatura (nom_assignatura, data_inici?, data_final?)>
+<!ATTLIST assignatura id_assignatura CDATA #REQUIRED>
+
+<!ELEMENT nom_assignatura (#PCDATA)>
+<!ATTLIST nom_assignatura cicle (DAM|DAW|ASIX|SMX|SEIA|ER|AUT) #REQUIRED>
+
+<!ELEMENT data_inici (#PCDATA)>
+<!ELEMENT data_final (#PCDATA)>
