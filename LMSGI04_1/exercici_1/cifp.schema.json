@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cifp.schema.json",
+
+  "$ref": "vocabulari.schema.json#/$defs",
+
+  "type": "object",
+  "properties": {
+    "cifp": {
+      "type": "object",
+      "properties": {
+        "alumne": {
+          "type": "array",
+          "items": { "$ref": "#/Alumne" }
+        },
+        "professor": {
+          "type": "array",
+          "items": { "$ref": "#/Professor" }
+        }
+      }
+    }
+  },
+  "required": ["cifp"]
+}
