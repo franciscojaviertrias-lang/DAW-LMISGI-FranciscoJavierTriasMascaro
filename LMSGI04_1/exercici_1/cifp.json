@@ -1,4 +1,5 @@
 {
+  "$schema": "./cifp.schema.json",
   "cifp": {
     "alumne": [
       {
