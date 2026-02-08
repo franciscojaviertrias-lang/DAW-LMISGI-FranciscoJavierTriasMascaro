@@ -1,0 +1,35 @@
+{
+  "cifp": {
+    "alumne": [
+      {
+        "id": 1,
+        "nom": "Maria",
+        "llinatges": "Garcia Pons",
+        "data_naixement": "2004-03-15",
+        "correu": "maria.garcia@cifp.cat",
+        "telefon": "600111222",
+        "adreça": "Carrer Major 10",
+        "data_matricula": "2024-09-20",
+        "curs": "DAM"
+      }
+    ],
+    "professor": [
+      {
+        "id": 10,
+        "nom": "Antoni",
+        "llinatges": "Ferrer Mir",
+        "data_incorporació": "2019-02-01",
+        "departament": "Informàtica",
+        "assignatura": [
+          {
+            "id_assignatura": 100,
+            "nom_assignatura": "Llenguatge de marques",
+            "cicle": "DAM",
+            "data_inici": "2024-09-10",
+            "data_final": "2025-06-20"
+          }
+        ]
+      }
+    ]
+  }
+}
