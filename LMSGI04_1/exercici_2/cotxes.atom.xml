@@ -6,6 +6,10 @@
   <id>https://www.motornews.com/feeds/cotxes</id>
   <updated>2024-11-15T12:00:00+01:00</updated>
 
+  <author>
+    <name>MotorNews</name>
+  </author>
+
   <entry>
     <title>Ferrari presenta el seu nou model híbrid, el SF-2024</title>
     <link href="https://www.motornews.com/ferrari-sf-2024-hibrid"/>
