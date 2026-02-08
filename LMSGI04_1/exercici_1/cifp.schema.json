@@ -1,24 +1,92 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "cifp.schema.json",
-
-  "$ref": "vocabulari.schema.json#/$defs",
-
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CIFP - Alumnes i Professors",
   "type": "object",
+  "additionalProperties": false,
+  "required": ["cifp"],
   "properties": {
     "cifp": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "alumne": {
           "type": "array",
-          "items": { "$ref": "#/Alumne" }
+          "items": { "$ref": "#/definitions/Alumne" }
         },
         "professor": {
           "type": "array",
-          "items": { "$ref": "#/Professor" }
+          "items": { "$ref": "#/definitions/Professor" }
+        }
+      },
+      "anyOf": [
+        { "required": ["alumne"] },
+        { "required": ["professor"] }
+      ]
+    }
+  },
+
+  "definitions": {
+    "Cicle": {
+      "type": "string",
+      "enum": ["DAM", "DAW", "ASIX", "SMX", "SEIA", "ER", "AUT"]
+    },
+
+    "Departament": {
+      "type": "string",
+      "enum": ["Informàtica", "Electricitat", "Automoció"]
+    },
+
+    "Assignatura": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id_assignatura", "nom_assignatura", "cicle"],
+      "properties": {
+        "id_assignatura": { "type": "integer" },
+        "nom_assignatura": { "type": "string" },
+        "cicle": { "$ref": "#/definitions/Cicle" },
+        "data_inici": { "type": "string" },
+        "data_final": { "type": "string" }
+      }
+    },
+
+    "Alumne": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "nom", "llinatges", "data_matricula", "curs"],
+      "properties": {
+        "id": { "type": "integer" },
+        "nom": { "type": "string" },
+        "llinatges": { "type": "string" },
+        "data_naixement": { "type": "string" },
+        "correu": { "type": "string" },
+        "telefon": { "type": "string" },
+        "adreça": { "type": "string" },
+
+        "data_matricula": { "type": "string" },
+        "curs": { "$ref": "#/definitions/Cicle" }
+      }
+    },
+
+    "Professor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "nom", "llinatges", "data_incorporació", "departament"],
+      "properties": {
+        "id": { "type": "integer" },
+        "nom": { "type": "string" },
+        "llinatges": { "type": "string" },
+        "data_naixement": { "type": "string" },
+        "correu": { "type": "string" },
+        "telefon": { "type": "string" },
+        "adreça": { "type": "string" },
+
+        "data_incorporació": { "type": "string" },
+        "departament": { "$ref": "#/definitions/Departament" },
+        "assignatura": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Assignatura" }
         }
       }
     }
-  },
-  "required": ["cifp"]
+  }
 }
