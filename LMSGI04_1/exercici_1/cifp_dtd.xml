@@ -1,1 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cifp SYSTEM "cifp.dtd">
+<cifp>
+  <alumne id="1">
+    <nom>Maria</nom>
+    <llinatges>Garcia Pons</llinatges>
+    <data_naixement>2004-03-15</data_naixement>
+    <correu>maria.garcia@cifp.cat</correu>
+    <telefon>600111222</telefon>
+    <adreca>Carrer Major 10</adreca>
+    <data_matricula>2024-09-20</data_matricula>
+    <curs><DAM/></curs>
+  </alumne>
+
+  <alumne id="2">
+    <nom>Joan</nom>
+    <llinatges>Serra Vidal</llinatges>
+    <data_matricula>2023-09-18</data_matricula>
+    <curs><DAW/></curs>
+  </alumne>
+
+  <professor id="10">
+    <nom>Antoni</nom>
+    <llinatges>Ferrer Mir</llinatges>
+    <correu>antoni.ferrer@cifp.cat</correu>
+    <data_incorporacio>2019-02-01</data_incorporacio>
+    <departament><Informatica/></departament>
+
+    <assignatura id_assignatura="100">
+      <nom_assignatura cicle="DAM">Llenguatge de marques</nom_assignatura>
+      <data_inici>2024-09-10</data_inici>
+      <data_final>2025-06-20</data_final>
+    </assignatura>
+
+    <assignatura id_assignatura="101">
+      <nom_assignatura cicle="DAW">Desenvolupament web</nom_assignatura>
+    </assignatura>
+  </professor>
+</cifp>
 
