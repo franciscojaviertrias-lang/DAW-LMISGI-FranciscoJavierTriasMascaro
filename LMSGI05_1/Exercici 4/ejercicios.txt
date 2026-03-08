@@ -1,0 +1,72 @@
+Exercici 4:
+
+4.1 De quants pagaments tenim informació?
+- Expresió: count(/payments/check)
+- Resultat: Int64='273'
+
+4.2 Quins són els números de xec associats al client amb customerNumber="103"?
+- Expresió: /payments/check[customer/@customerNumber="103"]/@number
+- Resultat:
+Attribute='number=HQ336336'
+Attribute='number=JM555205'
+Attribute='number=OM314933'
+
+4.3 Quina és la ciutat dels clients amb una quantitat inferior a 1500 i límit de crèdit superior a 1500?
+- Expresió: /payments/check[number(amount) < 1500 and number(customer/creditLimit) > 1500]/customer/city
+- Resultat:
+Element='<city>Stavern</city>'
+Element='<city>Charleroi</city>'
+Element='<city>Minato-ku</city>'
+
+4.4 Quin és el balanç disponible (amount) dels xecs dels clients que viuen a "Nantes"?
+- Expresió:/payments/check[customer/city="Nantes"]/amount
+- Resultat:
+Element='<amount>6066.78</amount>'
+Element='<amount>14571.44</amount>'
+Element='<amount>1676.14</amount>'
+Element='<amount>19501.82</amount>'
+Element='<amount>47924.19</amount>'
+Element='<amount>49523.67</amount>'
+
+4.5 Quina són les dates dels xecs associats als clients que viuen a "Japan" i tenen un límit de crèdit superior a 1000?
+- Expressió: /payments/check[customer/country="Japan" and number(customer/creditLimit) > 1000]/paymentDate
+- Resultat:
+Element='<paymentDate>2004-04-17</paymentDate>'
+Element='<paymentDate>2004-01-19</paymentDate>'
+Element='<paymentDate>2005-02-14</paymentDate>'
+Element='<paymentDate>2004-06-21</paymentDate>'
+Element='<paymentDate>2005-05-18</paymentDate>'
+Element='<paymentDate>2004-11-29</paymentDate>'
+
+4.6 Quin és el pagament (amount) més alt realitzat pels clients amb salesRepEmployeeNumber="1370"?
+- Expressió: max(/payments/check[customer/salesRepEmployeeNumber="1370"]/xs:decimal(amount))
+- Resultat: Decimal='120166.58'
+
+4.7 Quin és l'import mitjà (amount) dels pagaments realitzats amb data anterior al 1 de gener de 2004 pels clients de la branca amb salesRepEmployeeNumber="1370"?
+- Expressió: avg(/payments/check[customer/salesRepEmployeeNumber="1370" and paymentDate lt "2004-01-01"]/xs:decimal(amount))
+- Resultat: Decimal='36905.805'
+
+4.8 Quin és el nom del client associat al xec amb l'import més baix?
+- Expressió: /payments/check[amount = min(/payments/check/amount)]/customer/customerName
+- Resultat: Element='<customerName>Tokyo Collectables, Ltd</customerName>'
+
+4.9 Quin és el client associat a l'últim xec processat el 2004?
+- Expressió: /payments/check[starts-with(paymentDate,'2004') and number(translate(paymentDate,'-','')) = max(/payments/check[starts-with(paymentDate,'2004')]/number(translate(paymentDate,'-','')))]/customer/customerName/text()
+- Resultat:
+Text='Euro+ Shopping Channel'
+Text='Kelly's Gift Shop'
+
+
+4.10 Retorna una cadena amb la direcció completa del client (...) dels xecs associats a clients amb límit de crèdit superior a 1000. Fes que només retorni el primer element de cada node trobat
+- Expressió:
+concat(
+  "Client: ",
+  (/payments/check[number(customer/creditLimit) > 1000][1]/customer/customerName)[1],
+  ", Adreça: ",
+  (/payments/check[number(customer/creditLimit) > 1000][1]/customer/addressLine1)[1],
+  ", ",
+  (/payments/check[number(customer/creditLimit) > 1000][1]/customer/city)[1],
+  ", ",
+  (/payments/check[number(customer/creditLimit) > 1000][1]/customer/country)[1]
+)
+- Resultat: String='Client: Atelier graphique, Adreça: 54, rue Royale, Nantes, France'

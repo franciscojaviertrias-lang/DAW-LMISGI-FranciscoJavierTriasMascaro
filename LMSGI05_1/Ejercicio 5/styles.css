@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #dfe8ef;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #003b7a;
+  margin: 12px 0 20px;
+}
+
+#offices-container {
+  width: 96%;
+  margin: 0 auto 30px;
+}
+
+.office-card {
+  background-color: #f5f5f5;
+  border: 1px solid #c8c8c8;
+  margin-bottom: 55px;
+}
+
+.office-header {
+  background-color: #003f7f;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 22px 10px;
+}
+
+.office-body {
+  display: flex;
+  min-height: 140px;
+}
+
+.office-image {
+  width: 43%;
+  padding: 18px 10px;
+  box-sizing: border-box;
+  border-right: 1px solid #c8c8c8;
+}
+
+.office-image img {
+  width: 190px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.office-info {
+  width: 57%;
+}
+
+.office-info p {
+  margin: 0;
+  padding: 14px 12px;
+  border-bottom: 1px solid #c8c8c8;
+  font-size: 18px;
+}
+
+.office-info p:last-child {
+  border-bottom: none;
+}
+
+.office-info strong {
+  color: #222;
+}
